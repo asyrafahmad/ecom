@@ -18,6 +18,29 @@ class AdminController extends Controller
         if($request->isMethod('post')){
             $data = $request->all();
 
+            // Start Note: Validation version 1
+            $validatedData = $request->validate([
+                'email' => 'required|email|max:255',
+                'password' => 'required',
+            ]);
+            // End Note: Validation version 1
+
+            // Start Note: Validation version 2
+            // $rules = [
+            //     'email' => 'required|email|max:255',
+            //     'password' => 'required',
+            // ];
+
+            // $customMessages = [
+            //     'email.required' => 'Email is required',
+            //     'email.email' => 'Valid Email is required',
+            //     'password.required' => 'Password is required',
+            // ];
+
+            // $this->validate($request,$rules,$customMessages);
+            // End Note: Validation version
+
+            // Guard : Only admin can access
             if(Auth::guard('admin')->attempt(['email'=>$data['email'],'password'=>$data['password']])){
                 return redirect('admin/dashboard');
             }
@@ -25,6 +48,8 @@ class AdminController extends Controller
                 Session::flash('error_message','Invalid Email or Password');
                 return redirect()->back();
             }
+
+            // TO DEBUG ERROR
             // echo "<pre>";
             // print_r($data);
             // die;
