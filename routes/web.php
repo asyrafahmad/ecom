@@ -19,13 +19,15 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::prefix('/admin')->namespace('Admin')->group(function(){
-    // All the admin routes will be defined here
-    Route::match(['get','post'],'/','AdminController@login');               // url: http://127.0.0.1:8000/admin/
+
+
+Route::prefix('/admin')->namespace('Admin')->group(function(){                  // prefix = url / namespace = folder name
+
+    Route::match(['get','post'],'/','AdminController@login');                   // url: http://127.0.0.1:8000/admin/
 
     Route::group(['middleware'=>['admin']], function(){
-
         Route::get('dashboard','AdminController@dashboard');                // url: http://127.0.0.1:8000/admin/dashboard
+        Route::get('settings','AdminController@settings');
         Route::get('logout','AdminController@logout');
     });
 });

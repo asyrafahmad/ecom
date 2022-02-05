@@ -6,11 +6,25 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
 use Session;
+use App\Admin;
 
 class AdminController extends Controller
 {
     public function dashboard(){
         return view('layouts.admin.admin_dashboard');
+    }
+
+    public function settings(){
+
+        // echo "<pre>";
+        // print_r(Auth::guard('admin')->user()->id);
+        // die;
+
+        // Auth::guard('admin')->user()->id
+
+
+        $adminDetails = Admin::where('email', Auth::guard('admin')->user()->email)->first();
+        return view('layouts.admin.admin_settings')->with(compact('adminDetails'));
     }
 
     public function login(Request $request){
