@@ -37,7 +37,7 @@
                with font-awesome or any other icon font library -->
 
             <li class="nav-item">
-                <a href="{{ url('admin/dashboard') }}" class="nav-link">
+                <a href="{{ url('images/admin_images/admin_photos/'.Auth::guard('admin')->user()->image) }}" class="nav-link">
                     <i class="nav-icon fas fa-techometer-alt"></i>
                     <p>Dashboard</p>
                 </a>
