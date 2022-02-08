@@ -19,8 +19,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
-
 Route::prefix('/admin')->namespace('Admin')->group(function(){                  // prefix = url / namespace = folder name
 
     Route::match(['get','post'],'/','AdminController@login');                   // url: http://127.0.0.1:8000/admin/
@@ -31,5 +29,6 @@ Route::prefix('/admin')->namespace('Admin')->group(function(){                  
         Route::get('logout','AdminController@logout');
         Route::post('check-current-password','AdminController@checkCurrentPassword');
         Route::post('update-current-password','AdminController@updateCurrentPassword');
+        Route::match(['get','post'],'update-admin-details','AdminController@updateAdminDetails');
     });
 });
