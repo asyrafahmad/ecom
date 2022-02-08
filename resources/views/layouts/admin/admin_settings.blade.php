@@ -35,11 +35,11 @@
                                 </div>
                                 <!-- /.card-header -->
                                 <!-- form start -->
-                                <form>
+                                <form rolf="form" method="post" action="{{ url('/admin/update-pwd') }}" name="updatePasswordForm" id="updatePasswordForm">
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="exampleInputName">Admin Name</label>
-                                            <input type="text" class="form-control" value="{{ $adminDetails->name }}" placeholder="Enter Admin/Sub Admin Name">
+                                            <input type="text" class="form-control" value="{{ $adminDetails->name }}" placeholder="Enter Admin/Sub Admin Name" id="admin_name" name="admin_name">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Admin Email</label>
@@ -51,18 +51,19 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Current Password</label>
-                                            <input type="password" class="form-control" id="exampleInputPassword1"
-                                                placeholder="Enter Current Password">
+                                            <input type="password" class="form-control"
+                                                placeholder="Enter Current Password" id="current_password" name="current_password">
+                                                <span id="checkCurrentPwd"></span>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">New Password</label>
-                                            <input type="password" class="form-control" id="exampleInputPassword1"
-                                                placeholder="Enter New Password">
+                                            <input type="password" class="form-control"
+                                                placeholder="Enter New Password" id="new_password" name="new_password">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Confirm Password</label>
-                                            <input type="password" class="form-control" id="exampleInputPassword1"
-                                                placeholder="Confirm New Password">
+                                            <input type="password" class="form-control"
+                                                placeholder="Confirm New Password" id="confirm_password" name="confirm_password">
                                         </div>
                                     </div>
                                     <!-- /.card-body -->

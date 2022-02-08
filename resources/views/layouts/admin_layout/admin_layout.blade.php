@@ -33,7 +33,7 @@
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    <img class="animation__shake" src="{{ url('images/admin_images/AdminLTELogo.png') }}" alt="AdminLTELogo" height="60" width="60">
   </div>
 
   @include('layouts.admin_layout.admin_header')
@@ -66,7 +66,7 @@
 <!-- ChartJS -->
 <script src="{{ url('plugins/chart.js/Chart.min.js') }}"></script>
 <!-- Sparkline -->
-<script src="plugins/sparklines/sparkline.js') }}"></script>
+<script src="{{ url('plugins/sparklines/sparkline.js') }}"></script>
 <!-- JQVMap -->
 <script src="{{ url('plugins/jqvmap/jquery.vmap.min.js') }}"></script>
 <script src="{{ url('plugins/jqvmap/maps/jquery.vmap.usa.js') }}"></script>
@@ -87,5 +87,9 @@
 <script src="{{ url('js/admin_js/demo.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ url('js/admin_js/pages/dashboard.js') }}"></script>
+
+{{-- Custom Admin JS --}}
+<script src="{{ url('js/admin_js/admin_scripts.js') }}"></script>
+
 </body>
 </html>

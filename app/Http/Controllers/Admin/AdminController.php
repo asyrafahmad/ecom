@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Session;
 use App\Admin;
+use Hash;
 
 class AdminController extends Controller
 {
@@ -74,5 +75,16 @@ class AdminController extends Controller
     public function logout(){
         Auth::guard('admin')->logout();
         return redirect('/admin');
+    }
+
+    public function checkCurrentPassword(Request $request){
+        $data = $request->all();
+
+        if(Hash::check($data['current_password'], Auth::guard('admin')->user()->password)){
+            echo "true";
+        }
+        else{
+            echo "false";
+        }
     }
 }

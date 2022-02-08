@@ -29,5 +29,6 @@ Route::prefix('/admin')->namespace('Admin')->group(function(){                  
         Route::get('dashboard','AdminController@dashboard');                // url: http://127.0.0.1:8000/admin/dashboard
         Route::get('settings','AdminController@settings');
         Route::get('logout','AdminController@logout');
+        Route::post('check-current-password','AdminController@checkCurrentPassword');
     });
 });
