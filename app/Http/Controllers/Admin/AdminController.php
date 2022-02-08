@@ -13,20 +13,17 @@ use Image;
 class AdminController extends Controller
 {
     public function dashboard(){
+        Session::put('page','dashboard');
         return view('layouts.admin.admin_dashboard');
     }
 
     public function settings(){
 
-        // echo "<pre>";
-        // print_r(Auth::guard('admin')->user()->id);
-        // die;
-
-        // Auth::guard('admin')->user()->id
-
-
+        Session::put('page','settings');
         $adminDetails = Admin::where('email', Auth::guard('admin')->user()->email)->first();
         return view('layouts.admin.admin_settings')->with(compact('adminDetails'));
+
+        // echo "<pre>"; print_r(Auth::guard('admin')->user()->id); die;
     }
 
     public function login(Request $request){
@@ -66,9 +63,7 @@ class AdminController extends Controller
             }
 
             // TO DEBUG ERROR
-            // echo "<pre>";
-            // print_r($data);
-            // die;
+            echo "<pre>"; print_r($data); die;
         }
         return view('layouts.admin.admin_login');
     }
@@ -119,6 +114,9 @@ class AdminController extends Controller
     }
 
     public function updateAdminDetails(Request $request){
+
+        Session::put('page','update-admin-details');
+
         if($request->isMethod('post')){
             $data = $request->all();
 
@@ -150,7 +148,7 @@ class AdminController extends Controller
                     $imageName = rand(111,99999).'.'.$extension;
                     $imagePath = 'images/admin_images/admin_photos/'.$imageName;
                     // Upload the image
-                    Image::make($image_tmp)->save($imagePath);
+                    Image::make($image_tmp)->resize(300,400)->save($imagePath);
                 }
                 else if(!empty($data['current_admin_image'])){
                     $imageName = $data['current_admin_image'];
