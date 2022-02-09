@@ -54,6 +54,13 @@
                         <td>{{ $section->id }}</td>
                         <td>{{ $section->name }}</td>
                         <td>{{ $section->status }}</td>
+                        <td>
+                            @if($section->status==1)
+                                <a class="updateSectionStatus" id="section-{{ $section->id }}" section_id="{{ $section->id }}" href="javascript:void(0)">Active</a>
+                            @else
+                                <a class="updateSectionStatus" id="section-{{ $section->id }}" section_id="{{ $section->id }}" href="javascript:void(0)">Inactive</a>
+                            @endif
+                        </td>
                     </tr>
                     @endforeach
                     </tfoot>
