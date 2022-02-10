@@ -34,5 +34,9 @@ Route::prefix('/admin')->namespace('Admin')->group(function(){                  
         // Sections
         Route::get('sections','SectionController@sections');
         Route::post('update-section-status', 'SectionController@updateSectionStatus');
+
+        // Categories
+        Route::get('categories', 'CategoryController@categories');
+        Route::get('update-category-status', 'CategoryController@updateCategoryStatus');
     });
 });
