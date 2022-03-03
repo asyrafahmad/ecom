@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Section;
 use App\Category;
 use Session;
 
@@ -16,7 +17,7 @@ class CategoryController extends Controller
         // $categories = json_decode(json_encode($categories));
         // echo"<pre>"; print_r($categories); die;
 
-        return view('layout.admin.categories.categories')->with(compact('categories'));
+        return view('layouts.admin.categories.categories')->with(compact('categories'));
     }
 
     public function updateCategoryStatus(Request $request){
@@ -37,4 +38,22 @@ class CategoryController extends Controller
 
         }
     }
+
+    public function addEditCategory(Request $request, $id=null){
+
+        if($id==""){
+            $title = "Add Category";
+            // Add Category Functionality
+        }
+        else{
+            $title = "Edit Category";
+            // Edit Category Functionality
+        }
+
+        // Get All Sections
+        $getSections = Section::get();
+
+        return view('layouts.admin.categories.add_edit_category')->with(compact('title', 'getSections'));
+    }
 }
+
