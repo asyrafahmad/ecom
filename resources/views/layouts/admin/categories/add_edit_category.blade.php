@@ -40,11 +40,8 @@
                     <label for="category_name">Category Name</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Category Name">
                 </div>
-                <div class="form-group">
-                  <label>Select Category Level</label>
-                  <select name="parent_id" class="form-control select2" style="width: 100%;">
-                    <option value="0">Main Category</option>
-                  </select>
+                <div id="appendCategoriesLevel">
+                    @include('layouts.admin.categories.append_categories_level')
                 </div>
               </div>
               <div class="col-md-6">
@@ -53,7 +50,7 @@
                   <select name="section_id" class="form-control select2" style="width: 100%;">
                     <option selected="selected">Select</option>
                     @foreach($getSections as $section)
-                    <option>{{ $section->name }}</option>
+                        <option>{{ $section->name }}</option>
                     @endforeach
                   </select>
                 </div>
