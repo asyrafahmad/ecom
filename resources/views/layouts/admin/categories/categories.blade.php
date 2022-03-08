@@ -1,4 +1,4 @@
-@extends('layout.admin_layout.admin_layout')
+@extends('layouts.admin_layout.admin_layout')
 @section('content')
 
 
@@ -25,6 +25,14 @@
     <section class="content">
         <div class="container-fluid">
         <div class="row">
+
+            @if(Session::has('success_message'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert" stle="margin-top: 10px;">
+                    {{ Session::get('success_message') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
             <div class="col-12">
             <div class="card">
                 <div class="card-header">
